@@ -69,6 +69,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://zhuimoliu.github.io/post/xdebug/" title="PHP调试工具xdebug的安装和使用">PHP调试工具xdebug的安装和使用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月24日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://zhuimoliu.github.io/categories/Dev'>Dev</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            xdebug是一个PHP的断点调试工具，JetBrains的IDE也可以使用。 在文档的兼容性中可以看到，不同的版本支持的PHP版本，PHP5.6的最新版本是2.5，PHP7.1以上的支持最新的2.9版本。 docker-compose.yml version: &#39;3&#39; services: mysql: image: mysql:5.7 container_name: mysql-5.7 environment: - MYSQL_ROOT_PASSWORD=root phpmyadmin: build: ./ container_name: phpmyadmin links: - mysql:db ports: - 8080:80 - 9000:9000 Dockerfile FROM phpmyadmin/phpmyadmin RUN pecl install xdebug &amp;&amp; set -ex;\ { \ echo……
+        </div>
+        <p class="readmore"><a href="https://zhuimoliu.github.io/post/xdebug/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://zhuimoliu.github.io/post/centos/" title="CentOS的安装配置与使用">CentOS的安装配置与使用</a>
             </h1>
         </header>
@@ -169,6 +192,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://zhuimoliu.github.io/post/xdebug/" title="PHP调试工具xdebug的安装和使用">PHP调试工具xdebug的安装和使用</a>
+    </li>
+    
+    <li>
         <a href="https://zhuimoliu.github.io/post/centos/" title="CentOS的安装配置与使用">CentOS的安装配置与使用</a>
     </li>
     
@@ -192,6 +219,8 @@
     <section class="widget">
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
+    
+    <li><a href="https://zhuimoliu.github.io/categories/Dev/">Dev (1)</a></li>
     
     <li><a href="https://zhuimoliu.github.io/categories/Ops/">Ops (2)</a></li>
     

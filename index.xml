@@ -6,10 +6,19 @@
     <description>Recent content on 追墨的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 23 May 2020 22:46:23 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2020 21:06:53 +0800</lastBuildDate>
     
 	<atom:link href="https://zhuimoliu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PHP调试工具xdebug的安装和使用</title>
+      <link>https://zhuimoliu.github.io/post/xdebug/</link>
+      <pubDate>Sun, 24 May 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/xdebug/</guid>
+      <description>xdebug是一个PHP的断点调试工具，JetBrains的IDE也可以使用。 在文档的兼容性中可以看到，不同的版本支持的PHP版本，PHP5.6的最新版本是2.5，PHP7.1以上的支持最新的2.9版本。 docker-compose.yml version: &amp;#39;3&amp;#39; services: mysql: image: mysql:5.7 container_name: mysql-5.7 environment: - MYSQL_ROOT_PASSWORD=root phpmyadmin: build: ./ container_name: phpmyadmin links: - mysql:db ports: - 8080:80 - 9000:9000 Dockerfile FROM phpmyadmin/phpmyadmin RUN pecl install xdebug &amp;amp;&amp;amp; set -ex;\ { \ echo</description>
+    </item>
     
     <item>
       <title>CentOS的安装配置与使用</title>
