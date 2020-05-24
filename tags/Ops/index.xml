@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ops on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/tags/Ops/</link>
+    <description>Recent content in Ops on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 16 Feb 2020 12:54:54 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/tags/Ops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker的安装与基本使用</title>
+      <link>https://zhuimoliu.github.io/post/docker/</link>
+      <pubDate>Sun, 16 Feb 2020 12:54:54 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/docker/</guid>
+      <description>docker的特点： 环境配置一致 一次配置，到处运行 更快速的应用交付和部署 更便捷的升级和扩缩容 更简单的系统运维 更高效的计算资源利用 安装配置 # step 1: 安装必要的一些系统工具 sudo yum install -y yum-utils device-mapper-persistent-data lvm2 # Step 2: 添加软件源信息 sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo # Step 3: 更新并安装Docker-CE sudo yum makecache fast sudo yum -y install docker-ce # Step 4: 开启Docker</description>
+    </item>
+    
+  </channel>
+</rss>

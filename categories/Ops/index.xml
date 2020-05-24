@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ops on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/categories/Ops/</link>
+    <description>Recent content in Ops on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 23 May 2020 22:46:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/categories/Ops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CentOS的安装配置与使用</title>
+      <link>https://zhuimoliu.github.io/post/centos/</link>
+      <pubDate>Sat, 23 May 2020 22:46:23 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/centos/</guid>
+      <description>CentOS是RHEL的社区版，有安全稳定的特点，服务器使用最多的Linux。目前主流使用CentOS7版本，内核版本3.10。CentOS8的内核版本为4.18，安装需要至少2GB内存。 初始化 # 修改主机名，一般包含IP，版本，编号，用途等，使用点会被截短，即FQDN前面部分当主</description>
+    </item>
+    
+    <item>
+      <title>denyhosts工具的使用</title>
+      <link>https://zhuimoliu.github.io/post/denyhosts/</link>
+      <pubDate>Tue, 14 Jan 2020 22:46:23 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/denyhosts/</guid>
+      <description>简介 DenyHosts是一个python写的脚本，常用来限制SSH登陆，通过监控系统日志，将超过错误次数的IP放入TCP Wrappers中禁止登陆。UNIX Review杂志评选的2005年8月的月度工具。除了基础的屏蔽IP功能，还有邮件通知，插件，同步等功能。 官方站点：http:</description>
+    </item>
+    
+  </channel>
+</rss>
