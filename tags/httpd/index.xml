@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>httpd on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/tags/httpd/</link>
+    <description>Recent content in httpd on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Mar 2020 21:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/tags/httpd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows下apache的安装配置与搭建PHP环境</title>
+      <link>https://zhuimoliu.github.io/post/apache/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/apache/</guid>
+      <description>安装 Apache是基金会的名字，作为服务器web软件，真实名字叫httpd，官方并不提供二进制版本，需要自行编译 但是apachehaus提供了Windows下的二进制下载。不过需要说明的是httpd不管是在Windows下还是Linux下都是很不安全的，只能用于本地开发。 下载地址</description>
+    </item>
+    
+  </channel>
+</rss>

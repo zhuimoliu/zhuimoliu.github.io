@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Docker的安装与基本使用 | 追墨的博客</title>
-    <meta property="og:title" content="Docker的安装与基本使用 - 追墨的博客">
+    <title>Windows下apache的安装配置与搭建PHP环境 | 追墨的博客</title>
+    <meta property="og:title" content="Windows下apache的安装配置与搭建PHP环境 - 追墨的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-02-16T12:54:54&#43;08:00'>
+    <meta property="article:published_time" content='2020-03-06T21:06:53&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-02-16T12:54:54&#43;08:00'>
+    <meta property="article:modified_time" content='2020-03-06T21:06:53&#43;08:00'>
         
     <meta name="Keywords" content="Blog">
-    <meta name="description" content="Docker的安装与基本使用">
+    <meta name="description" content="Windows下apache的安装配置与搭建PHP环境">
         
     <meta name="author" content="追墨">
-    <meta property="og:url" content="https://zhuimoliu.github.io/post/docker/">
+    <meta property="og:url" content="https://zhuimoliu.github.io/post/apache/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -135,10 +135,8 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#安装配置">安装配置</a></li>
-    <li><a href="#基本使用">基本使用</a></li>
-    <li><a href="#dockerfile">Dockerfile</a></li>
-    <li><a href="#docker-compose">docker-compose</a></li>
+    <li><a href="#安装">安装</a></li>
+    <li><a href="#配置">配置</a></li>
   </ul>
 </nav>
     </div>
@@ -172,10 +170,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">Docker的安装与基本使用</h1>
+            <h1 class="post-title">Windows下apache的安装配置与搭建PHP环境</h1>
         </header>
         <date class="post-meta meta-date">
-            2020年2月16日
+            2020年3月6日
         </date>
         
         
@@ -186,130 +184,37 @@
         
         
         <div class="post-content">
-            <p>docker的特点：</p>
-<ul>
-<li>
-<p>环境配置一致</p>
-</li>
-<li>
-<p>一次配置，到处运行</p>
-</li>
-<li>
-<p>更快速的应用交付和部署</p>
-</li>
-<li>
-<p>更便捷的升级和扩缩容</p>
-</li>
-<li>
-<p>更简单的系统运维</p>
-</li>
-<li>
-<p>更高效的计算资源利用</p>
-</li>
-</ul>
-<h2 id="安装配置">安装配置</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># step 1: 安装必要的一些系统工具</span>
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-<span style="color:#75715e"># Step 2: 添加软件源信息</span>
-sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-<span style="color:#75715e"># Step 3: 更新并安装Docker-CE</span>
-sudo yum makecache fast
-sudo yum -y install docker-ce
-<span style="color:#75715e"># Step 4: 开启Docker服务</span>
-sudo service docker start
-<span style="color:#75715e"># 配置加速镜像，/etc/docker/daemon.json</span>
-sudo mkdir -p /etc/docker
-<span style="color:#75715e">#{&#34;registry-mirrors&#34;: [&#34;https://reg-mirror.qiniu.com/&#34;, &#34;https://docker.mirrors.ustc.edu.cn&#34;, &#34;https://hub-mirror.c.163.com&#34;, &#34;https://weqjh8dwxxx.mirror.aliyuncs.com&#34;]}</span>
-sudo systemctl daemon-reload
-sudo systemctl restart docker
-</code></pre></div><p>docker info 查看加速是否生效</p>
-<h2 id="基本使用">基本使用</h2>
-<p>docker version</p>
-<p>docker info</p>
-<p>docker &ndash;help</p>
-<p>docker images -a（含中间层） -q &ndash;digests（摘要） &ndash;no-trunc</p>
-<p>docker search</p>
-<p>docker pull ImageName:Tag</p>
-<p>docker rmi -f xxx/$(docker images -qa)</p>
-<p>docker pull xxx</p>
-<p>docker run [options] ImageName [command]</p>
-<p>常用选项：-i交互，-t终端，-d后台，&ndash;name名称，-p端口（可加主机IP），-P随机端口</p>
-<p>docker ps -a -l（最近） -n（最近n个） -q &ndash;no-trunc</p>
-<p>ctrl+P+Q，不停止退出</p>
-<p>docker start/stop/restart/kill/rm/pause/unpause/commit/import/export/load/save/build</p>
-<p>save保存的是image，export导出的是container</p>
-<p>create 创建但不启动容器，diff查看容器变化</p>
-<p>events，从 docker 服务获取容器实时事件，history，显示历史</p>
-<p>port，查看端口映射，tag，给image打标签，wait，显示退出状态码</p>
-<p>docker rm -f $(docker ps -a -q) 或者 docker ps -a -q | xargs docker rm</p>
-<p>docker容器后台运行，必须有一个前台进程，且需要一直挂起运行（top，tail -f），否则会自动退出（kill self，因为没事可做）</p>
-<p>docker logs -f（跟随最新） -t（加入时间戳） &ndash;tail（数字显示条数） xxx</p>
-<p>docker top xxx</p>
-<p>docker inspect xxx</p>
-<p>docker exec -it xxx /bin/bash</p>
-<p>docker attach xxx</p>
-<p>docker cp xxx:/path/to/file /path/to/file</p>
-<p>镜像使用联合文件系统，一层层的只读文件，overlay文件系统，使用bootloader加载bootfs，启动kernel，然后加载rootfs</p>
-<p>docker commit -m &ldquo;message&rdquo; -a &ldquo;author&rdquo; xxx ImageName:Tag</p>
-<p>数据卷类似挂载，-v，ro只读，默认可读写，可能需要&ndash;privileged=true</p>
-<p>VOLUME指令添加数据卷</p>
-<p>数据卷容器，解决容器之间数据共享，&ndash;volumes-from，只要有容器使用就一直存在</p>
-<p>网络模式，默认情况下使用名为docker0的bridge，也可以使用host模式</p>
-<h2 id="dockerfile">Dockerfile</h2>
-<pre><code>FROM Image:Tag  
-MAINTAINER Author &lt;user@email&gt;  
-RUN 执行命令
-EXPOSE 暴露的端口
-WORKDIR 默认工作目录
-USER 运行的用户
-ENV 环境变量，使用$JAVA_HOME：JAVA_HOME /usr/local/java
-ADD 添加文件并解压：xxx.tar.gz /usr/local/
-COPY 添加文件
-VOLUME 卷
-CMD 可以多个，最后一个为run时调用的命令，前面的为构建时执行的命令
-# 如果run时指定，则原最后一个CMD不会执行
-ENTRYPOINT 启动命令 run时可追加参数
-ONBUILD 子镜像构建时执行的命令
-</code></pre><p><code>docker build -f xxx -t xxx .</code></p>
-<h2 id="docker-compose">docker-compose</h2>
-<p>配置文件名：docker-compose.yml</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#39;3&#39;</span>
-services:
-  nginx:
-    image: nginx:<span style="color:#ae81ff">1.16</span><span style="color:#ae81ff">.1</span>
-    container_name: nginx
-    volumes:
-      - /docker/conf/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /docker/logs:/data/logs
-      - /docker/www:/data/www
-    ports:
-      - <span style="color:#e6db74">&#34;8080:80&#34;</span>
-    links:
-      - php-fpm:php7<span style="color:#ae81ff">.2</span>-fpm
-
-  php-fpm:
-    build: ./
-    container_name: php-fpm
-    volumes:
-      - /docker/conf/php/php.ini:/usr/local/etc/php/php.ini
-      - /docker/conf/php/php-fpm.conf:/usr/local/etc/php/php-fpm.conf
-      - /docker/conf/php/supervisord.conf:/etc/supervisor/supervisord.conf
-      - /docker/logs:/data/logs
-      - /docker/www:/data/www
-      - /nfs/www:/nfs/www
-    expose:
-      - <span style="color:#e6db74">&#34;9000&#34;</span>
-    entrypoint: supervisord -c /etc/supervisor/supervisord.conf
-</code></pre></div><p>docker-swarm 可以创建跨主机的容器集群，一般配合docker-machine创建多个主机</p>
-<p>更好的方案是使用kubernets</p>
-
+            <h2 id="安装">安装</h2>
+<p>Apache是基金会的名字，作为服务器web软件，真实名字叫httpd，官方并不提供二进制版本，需要自行编译</p>
+<p>但是apachehaus提供了Windows下的二进制下载。不过需要说明的是httpd不管是在Windows下还是Linux下都是很不安全的，只能用于本地开发。</p>
+<p>下载地址：<code>https://www.apachehaus.com/cgi-bin/download.plx</code>，该页面同时也提供VC14等的下载链接。</p>
+<p>管理员执行：<code>\bin\httpd.exe -k install</code>，安装httpd服务，此后就可以使用ApacheMonitor管理服务。</p>
+<p>httpd与PHP常用的结合方式是ISAPI（互联网服务应用编程接口），需要使用线程安全的版本。Nginx与PHP结合时常用fastcgi方式，此时使用nts版PHP可以提高性能。</p>
+<p>下载解压即可使用，不过需要注意的是，如果使用openssl扩展，需要PHP安装目录全局可见，即<code>setx /m path &quot;%path%;C:\lamp\php-7.1.9-Win32-VC14-x64&quot;</code></p>
+<p>MySQL5.6安装需要vc2010x64和DotNetFramework4.5.2(高版本Windows已安装)，安装时要选择server only，文件名为mysql-installer-community-5.6.48.0.msi</p>
+<h2 id="配置">配置</h2>
+<p>httpd修改配置文件，将SRVROOT改为真实路径，如：<code>Define SRVROOT &quot;C:/lamp/Apache24&quot;</code>，还需要如下修改：</p>
+<p><code>LoadModule php7_module C:/lamp/php-7.1.9-Win32-VC14-x64/php7apache2_4.dll</code></p>
+<p><code>AddType application/x-httpd-php .php</code></p>
+<p><code>PHPIniDir &quot;C:/lamp/php-7.1.9-Win32-VC14-x64&quot;</code></p>
+<p><code>DirectoryIndex index.html index.php</code></p>
+<p>PHP复制php.ini-development为php.ini，最后添加配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">extension_dir</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ext&#34;</span>
+<span style="color:#a6e22e">extension</span><span style="color:#f92672">=</span><span style="color:#e6db74">php_curl.dll</span>
+<span style="color:#a6e22e">extension</span><span style="color:#f92672">=</span><span style="color:#e6db74">php_mbstring.dll</span>
+<span style="color:#a6e22e">extension</span><span style="color:#f92672">=</span><span style="color:#e6db74">php_mysqli.dll</span>
+<span style="color:#a6e22e">extension</span><span style="color:#f92672">=</span><span style="color:#e6db74">php_openssl.dll</span>
+<span style="color:#a6e22e">extension</span><span style="color:#f92672">=</span><span style="color:#e6db74">php_pdo_mysql.dll</span>
+<span style="color:#a6e22e">date.timezone</span> <span style="color:#f92672">=</span>  <span style="color:#e6db74">PRC</span>
+<span style="color:#a6e22e">openssl.cafile</span><span style="color:#f92672">=</span><span style="color:#e6db74">cacert.pem</span>
+</code></pre></div>
         </div>
 
         
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://zhuimoliu.github.io">追墨</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://zhuimoliu.github.io/post/docker/">https://zhuimoliu.github.io/post/docker/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://zhuimoliu.github.io/post/apache/">https://zhuimoliu.github.io/post/apache/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -322,6 +227,10 @@ services:
 <div class="post-archive">
     <h2>See Also</h2>
     <ul class="listing">
+        
+        <li><a href="/post/vmware-install-macos/">VMware安装MacOS 10.14</a></li>
+        
+        <li><a href="/post/docker/">Docker的安装与基本使用</a></li>
         
         <li><a href="/post/denyhosts/">denyhosts工具的使用</a></li>
         
@@ -337,7 +246,11 @@ services:
             
             <ul class="clearfix">
                 
-                <li><a href='https://zhuimoliu.github.io/tags/Docker'>Docker</a></li>
+                <li><a href='https://zhuimoliu.github.io/tags/httpd'>httpd</a></li>
+                
+                <li><a href='https://zhuimoliu.github.io/tags/PHP'>PHP</a></li>
+                
+                <li><a href='https://zhuimoliu.github.io/tags/apache'>apache</a></li>
                 
             </ul>
             

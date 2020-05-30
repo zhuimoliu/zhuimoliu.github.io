@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MacOS on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/tags/MacOS/</link>
+    <description>Recent content in MacOS on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Mar 2020 21:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/tags/MacOS/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VMware安装MacOS 10.14</title>
+      <link>https://zhuimoliu.github.io/post/vmware-install-macos/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/vmware-install-macos/</guid>
+      <description>苹果系统自成一个生态系统，没有软硬件的情况下，安装确实不易。苹果也不想浪费资源到不买硬件的人身上，设置了重重障碍。 安装VMware15.5 点击下一步多次，增强键盘需要重启，但功能更多，最后一步输入注册码激活 安装unlocker 这是民间的力量，GitHub有很多个，以前的unloc</description>
+    </item>
+    
+  </channel>
+</rss>

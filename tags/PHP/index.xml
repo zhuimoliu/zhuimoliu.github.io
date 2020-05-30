@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PHP on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/tags/PHP/</link>
+    <description>Recent content in PHP on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 May 2020 21:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/tags/PHP/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP调试工具xdebug的安装和使用</title>
+      <link>https://zhuimoliu.github.io/post/xdebug/</link>
+      <pubDate>Sun, 24 May 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/xdebug/</guid>
+      <description>xdebug是一个PHP的断点调试工具，JetBrains的IDE也可以使用。 在文档的兼容性中可以看到，不同的版本支持的PHP版本，PHP5.6的最新版本是2.5，PHP7.1以上的支持最新的2.9版本。 docker-compose.yml version: &amp;#39;3&amp;#39; services: mysql: image: mysql:5.7 container_name: mysql-5.7 environment: - MYSQL_ROOT_PASSWORD=root phpmyadmin: build: ./ container_name: phpmyadmin links: - mysql:db ports: - 8080:80 - 9000:9000 Dockerfile FROM phpmyadmin/phpmyadmin RUN pecl install xdebug &amp;amp;&amp;amp; set -ex;\ { \ echo</description>
+    </item>
+    
+    <item>
+      <title>Windows下apache的安装配置与搭建PHP环境</title>
+      <link>https://zhuimoliu.github.io/post/apache/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/apache/</guid>
+      <description>安装 Apache是基金会的名字，作为服务器web软件，真实名字叫httpd，官方并不提供二进制版本，需要自行编译 但是apachehaus提供了Windows下的二进制下载。不过需要说明的是httpd不管是在Windows下还是Linux下都是很不安全的，只能用于本地开发。 下载地址</description>
+    </item>
+    
+  </channel>
+</rss>

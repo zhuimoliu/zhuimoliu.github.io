@@ -6,17 +6,80 @@
     <description>Recent content in Tags on 追墨的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 16 Feb 2020 12:54:54 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2020 21:06:53 +0800</lastBuildDate>
     
 	<atom:link href="https://zhuimoliu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Ops</title>
-      <link>https://zhuimoliu.github.io/tags/Ops/</link>
+      <title>PHP</title>
+      <link>https://zhuimoliu.github.io/tags/PHP/</link>
+      <pubDate>Sun, 24 May 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/PHP/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xdebug</title>
+      <link>https://zhuimoliu.github.io/tags/Xdebug/</link>
+      <pubDate>Sun, 24 May 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/Xdebug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CentOS</title>
+      <link>https://zhuimoliu.github.io/tags/CentOS/</link>
+      <pubDate>Sat, 23 May 2020 22:46:23 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/CentOS/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>apache</title>
+      <link>https://zhuimoliu.github.io/tags/apache/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/apache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>httpd</title>
+      <link>https://zhuimoliu.github.io/tags/httpd/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/httpd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MacOS</title>
+      <link>https://zhuimoliu.github.io/tags/MacOS/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/MacOS/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VMware</title>
+      <link>https://zhuimoliu.github.io/tags/VMware/</link>
+      <pubDate>Fri, 06 Mar 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/tags/VMware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://zhuimoliu.github.io/tags/Docker/</link>
       <pubDate>Sun, 16 Feb 2020 12:54:54 +0800</pubDate>
       
-      <guid>https://zhuimoliu.github.io/tags/Ops/</guid>
+      <guid>https://zhuimoliu.github.io/tags/Docker/</guid>
       <description></description>
     </item>
     

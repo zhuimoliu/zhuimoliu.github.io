@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Categories | 追墨的博客</title>
-    <meta property="og:title" content="Categories - 追墨的博客">
+    <title>Xdebug | 追墨的博客</title>
+    <meta property="og:title" content="Xdebug - 追墨的博客">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="Blog">
-    <meta name="description" content="Categories">
+    <meta name="description" content="Xdebug">
         
     <meta name="author" content="追墨">
-    <meta property="og:url" content="https://zhuimoliu.github.io/categories/">
+    <meta property="og:url" content="https://zhuimoliu.github.io/tags/Xdebug/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml+xml" href="https://zhuimoliu.github.io/categories/index.xml" title="追墨的博客" />
+    <link rel="alternate" type="application/rss+xml+xml" href="https://zhuimoliu.github.io/tags/Xdebug/index.xml" title="追墨的博客" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -49,7 +49,7 @@
                     
                     <a  href="https://zhuimoliu.github.io/archives/" title="归档">归档</a>
                     
-                    <a class="current" href="https://zhuimoliu.github.io/categories/" title="分类">分类</a>
+                    <a  href="https://zhuimoliu.github.io/categories/" title="分类">分类</a>
                     
                     <a  href="https://zhuimoliu.github.io/tags/" title="标签">标签</a>
                     
@@ -65,13 +65,38 @@
 
                 <div class="col-8" id="main">
                     
-<header>
+<div class="res-cons">
     
-        <h1>共有0个分类</h1>
+    <h3 class="archive-title">
+        包含标签
+        <span class="keyword">Xdebug</span>
+        的文章
+    </h3>
     
-</header>
-<div class="post-archive">
+
     
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://zhuimoliu.github.io/post/xdebug/">PHP调试工具xdebug的安装和使用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月24日
+        </date>
+        
+        <div class="post-content">
+            xdebug是一个PHP的断点调试工具，JetBrains的IDE也可以使用。 在文档的兼容性中可以看到，不同的版本支持的PHP版本，PHP5.6的最新版本是2.5，PHP7.1以上的支持最新的2.9版本。 docker-compose.yml version: &#39;3&#39; services: mysql: image: mysql:5.7 container_name: mysql-5.7 environment: - MYSQL_ROOT_PASSWORD=root phpmyadmin: build: ./ container_name: phpmyadmin links: - mysql:db ports: - 8080:80 - 9000:9000 Dockerfile FROM phpmyadmin/phpmyadmin RUN pecl install xdebug &amp;&amp; set -ex;\ { \ echo……
+            <p class="readmore"><a href="https://zhuimoliu.github.io/post/xdebug/">阅读全文</a></p>
+        </div>
+    </article>
+    
+
+    
+
+
+
+
 
 </div>
 

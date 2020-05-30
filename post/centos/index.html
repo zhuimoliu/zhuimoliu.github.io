@@ -136,19 +136,15 @@
         <nav id="TableOfContents">
   <ul>
     <li><a href="#初始化">初始化</a></li>
-    <li><a href="#附录">附录</a>
-      <ul>
-        <li><a href="#配置文件">配置文件</a></li>
-        <li><a href="#开源协议">开源协议</a></li>
-        <li><a href="#帮助信息">帮助信息</a></li>
-        <li><a href="#常用命令">常用命令</a></li>
-        <li><a href="#nat">NAT</a></li>
-        <li><a href="#磁盘管理">磁盘管理</a></li>
-        <li><a href="#时间同步">时间同步</a></li>
-        <li><a href="#防火墙">防火墙</a></li>
-        <li><a href="#tcpip">TCP/IP</a></li>
-      </ul>
-    </li>
+    <li><a href="#配置文件">配置文件</a></li>
+    <li><a href="#开源协议">开源协议</a></li>
+    <li><a href="#帮助信息">帮助信息</a></li>
+    <li><a href="#常用命令">常用命令</a></li>
+    <li><a href="#nat">NAT</a></li>
+    <li><a href="#磁盘管理">磁盘管理</a></li>
+    <li><a href="#时间同步">时间同步</a></li>
+    <li><a href="#防火墙">防火墙</a></li>
+    <li><a href="#tcpip">TCP/IP</a></li>
   </ul>
 </nav>
     </div>
@@ -188,13 +184,6 @@
             2020年5月23日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://zhuimoliu.github.io/categories/Ops'>Ops</a></span>
-            
-        </div>
-        
         
         <div class="post-meta">
             <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
@@ -218,7 +207,7 @@ yum -y install chrony
 systemctl enable chronyd
 systemctl start chronyd
 
-<span style="color:#75715e"># 修改SSHD端口，过滤掉直接扫描22端口的hacker，可通过echo $RANDOM，获取一个大于1024的端口</span>
+<span style="color:#75715e"># 修改SSHD端口，过滤掉大规模扫描22端口和SSH漏洞的的hacker，可通过echo $RANDOM，获取一个大于1024的端口</span>
 <span style="color:#75715e"># 也可禁止root登录，限制登录用户，限制登录IP地址，默认已经禁止空密码登录</span>
 sed -i <span style="color:#e6db74">&#39;s/#Port 22/Port 21773/g&#39;</span> /etc/ssh/sshd_config
 <span style="color:#75715e">#sed -i &#39;s/#UseDNS yes/UseDNS no/g&#39; /etc/ssh/sshd_config</span>
@@ -249,36 +238,48 @@ echo <span style="color:#e6db74">&#34;fs.file-max=6553500&#34;</span> &gt;&gt; /
 sysctl -p
 
 <span style="color:#75715e"># 内核优化</span>
-<span style="color:#75715e">#cat &gt;&gt;/etc/sysctl.conf&lt;&lt;eof</span>
-<span style="color:#75715e">#net.ipv4.tcp_fin_timeout = 2</span>
-<span style="color:#75715e">#net.ipv4.tcp_tw_reuse = 1</span>
-<span style="color:#75715e">#net.ipv4.tcp_tw_recycle = 1</span>
-<span style="color:#75715e">#net.ipv4.tcp_syncookies = 1</span>
-<span style="color:#75715e">#net.ipv4.tcp_keepalive_time =600</span>
-<span style="color:#75715e">#net.ipv4.ip_local_port_range = 4000    65000</span>
-<span style="color:#75715e">#net.ipv4.tcp_max_syn_backlog = 16384</span>
-<span style="color:#75715e">#net.ipv4.tcp_max_tw_buckets = 36000</span>
-<span style="color:#75715e">#net.ipv4.route.gc_timeout = 100</span>
-<span style="color:#75715e">#net.ipv4.tcp_syn_retries = 1</span>
-<span style="color:#75715e">#net.ipv4.tcp_synack_retries = 1</span>
-<span style="color:#75715e">#net.core.somaxconn = 16384</span>
-<span style="color:#75715e">#net.core.netdev_max_backlog = 16384</span>
-<span style="color:#75715e">#net.ipv4.tcp_max_orphans = 16384</span>
-<span style="color:#75715e">## iptables</span>
-<span style="color:#75715e">#net.nf_conntrack_max = 25000000</span>
-<span style="color:#75715e">#net.netfilter.nf_conntrack_max = 25000000</span>
-<span style="color:#75715e">#net.netfilter.nf_conntrack_tcp_timeout_established = 180</span>
-<span style="color:#75715e">#net.netfilter.nf_conntrack_tcp_timeout_time_wait = 120</span>
-<span style="color:#75715e">#net.netfilter.nf_conntrack_tcp_timeout_close_wait = 60</span>
-<span style="color:#75715e">#net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 120</span>
-<span style="color:#75715e">#eof</span>
-</code></pre></div><h2 id="附录">附录</h2>
-<h3 id="配置文件">配置文件</h3>
+cat &gt;&gt;/etc/sysctl.conf<span style="color:#e6db74">&lt;&lt;eof
+</span><span style="color:#e6db74"># FIN-WAIT-2状态的时间，常用于负载均衡或代理服务器快速关闭连接，增加处理能力，默认为60，对应/proc/sys/net/ipv4
+</span><span style="color:#e6db74">#net.ipv4.tcp_fin_timeout = 2
+</span><span style="color:#e6db74"># 默认为1，过滤掉时间戳小于当前连接最新时间戳的报文，在NAT或LVS环境容易出问题，常需要关闭
+</span><span style="color:#e6db74">#net.ipv4.tcp_timestamps = 0
+</span><span style="color:#e6db74"># 开启timestamps才有用，默认timestamps是开启的。常用于增加客户端处理能力，因为端口有限，最大65535
+</span><span style="color:#e6db74">#net.ipv4.tcp_tw_reuse = 1
+</span><span style="color:#e6db74"># 开启timestamps才有用。在NAT或LVS环境，不同的客户端不同网络延时，可能导致丢包，不建议开启
+</span><span style="color:#e6db74">#net.ipv4.tcp_tw_recycle = 1
+</span><span style="color:#e6db74"># 当SYN等待队列backlog溢出时，启用cookies来处理，可防范少量SYN Flood攻击，默认为0，表示关闭，2为始终启用
+</span><span style="color:#e6db74">net.ipv4.tcp_syncookies = 1
+</span><span style="color:#e6db74">net.ipv4.tcp_keepalive_time =600
+</span><span style="color:#e6db74"># 负载均衡或代理服务器增加端口范围
+</span><span style="color:#e6db74">net.ipv4.ip_local_port_range = 4000 65000
+</span><span style="color:#e6db74"># 默认只有128
+</span><span style="color:#e6db74">net.ipv4.tcp_max_syn_backlog = 16384
+</span><span style="color:#e6db74"># 默认只有4096
+</span><span style="color:#e6db74">net.ipv4.tcp_max_tw_buckets = 36000
+</span><span style="color:#e6db74">#net.ipv4.route.gc_timeout = 100
+</span><span style="color:#e6db74">net.ipv4.tcp_syn_retries = 1
+</span><span style="color:#e6db74">net.ipv4.tcp_synack_retries = 1
+</span><span style="color:#e6db74"># 要大于tcp_max_syn_backlog，默认128，listen的连接最大值
+</span><span style="color:#e6db74">net.core.somaxconn = 16384
+</span><span style="color:#e6db74">net.core.netdev_max_backlog = 16384
+</span><span style="color:#e6db74"># 默认4096，增大可以抵挡简单DOS攻击
+</span><span style="color:#e6db74">net.ipv4.tcp_max_orphans = 16384
+</span><span style="color:#e6db74">## iptables
+</span><span style="color:#e6db74">net.nf_conntrack_max = 25000000
+</span><span style="color:#e6db74"># 默认为31184
+</span><span style="color:#e6db74">net.netfilter.nf_conntrack_max = 25000000
+</span><span style="color:#e6db74"># 默认为5天
+</span><span style="color:#e6db74">net.netfilter.nf_conntrack_tcp_timeout_established = 180
+</span><span style="color:#e6db74">net.netfilter.nf_conntrack_tcp_timeout_time_wait = 120
+</span><span style="color:#e6db74">net.netfilter.nf_conntrack_tcp_timeout_close_wait = 60
+</span><span style="color:#e6db74">net.netfilter.nf_conntrack_tcp_timeout_fin_wait = 120
+</span><span style="color:#e6db74">eof</span>
+</code></pre></div><h2 id="配置文件">配置文件</h2>
 <p>一般函数和别名放在bashrc中，登录环境变量和需要启动的程序放在profile中。</p>
 <p>分为交互式登录一般为完整登录，非交互式登录为临时打开或切换（如：<code>su www</code>）</p>
 <p>交互式登录，加载顺序，<code>/etc/profile.d</code>，profile，bashrc，个人bashrc，个人profile</p>
 <p>非交互式登录，加载顺序，<code>/etc/profile.d</code>，bashrc，个人bashrc</p>
-<h3 id="开源协议">开源协议</h3>
+<h2 id="开源协议">开源协议</h2>
 <p><a href="https://choosealicense.com/licenses/">https://choosealicense.com/licenses/</a></p>
 <p>GPLv3, 可以商业使用，可以分发，可以修改，自动获得专利权，也可以私下修改使用，分发时，需要保留相同的协议，必须开源，并记录修改。</p>
 <p>LGPL，作为动态链接库使用时，可以闭源商业使用，静态链接库使用时，与GPL相同。</p>
@@ -286,7 +287,7 @@ sysctl -p
 <p>Apache License 2.0，仅需记录修改，保留协议声明，不能使用该开源软件的商标。</p>
 <p>Mozilla Public License 2.0，基本同APL2.0，但是作了修改后，需要使用相同或类似协议。</p>
 <p>MIT License，不会自动获得专利，有专利的须获得授权。使用时仅需保留原协议声明，没有专利时，是最宽松的协议了。</p>
-<h3 id="帮助信息">帮助信息</h3>
+<h2 id="帮助信息">帮助信息</h2>
 <p><code>type echo</code>：通过type命令可以知道一个命令是shell内建的，还是命令程序。</p>
 <p><code>help echo</code>：内建的命令，可以通过help获取帮助信息。</p>
 <p><strong>显示中文帮助信息：</strong></p>
@@ -302,7 +303,7 @@ sed -i <span style="color:#e6db74">&#34;s/^LANG=.*/LANG=zh_CN.UTF-8/&#34;</span>
 <p><code>which tar</code>: 显示命令程序的位置</p>
 <p><code>info tar</code>: 显示命令info文档，比man要全面易懂</p>
 <p><code>git.io/linux</code>: 查看命名的简短帮助信息和示例</p>
-<h3 id="常用命令">常用命令</h3>
+<h2 id="常用命令">常用命令</h2>
 <p><code>hostnamectl set-hostname docker-node-01</code>, 设置主机名，以便区分当前所在机器</p>
 <p><code>timedatectl set-timezone PRC</code>, 设置时区为PRC</p>
 <p><code>ln -nfs /usr/share/zoneinfo/PRC /etc/localtime</code>, 同样设置时区</p>
@@ -357,7 +358,7 @@ cat &gt;&gt;notes.txt<span style="color:#e6db74">&lt;&lt;eof
 <p><code>:g!/{pattern}/d</code>，<code>w {newfile}</code>, vi正则导出匹配的行（小文件）</p>
 <p><code>m[c]</code>，使用一个字符标记一行，<code>'[c]</code>, 跳转到标记的行，<code>|[c] !cat &gt; notes.txt</code>,less导出标记的行到当前行到文件（大文件）</p>
 <p><code>dd if=/dev/sda of=mbr.bak bs=512 count=1</code>, 备份分区表</p>
-<h3 id="nat">NAT</h3>
+<h2 id="nat">NAT</h2>
 <p>SNAT常用于内部无法上网的机器通过网关上网。还需要调整安全组和解除网关MAC与IP绑定。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 网关打开核心转发</span>
 echo <span style="color:#e6db74">&#34;net.ipv4.ip_forward=1&#34;</span> &gt;&gt; /etc/sysctl.conf
@@ -369,7 +370,7 @@ iptables -t nat -A POSTROUTING -o eth0 -s 192.168.1.0/24 -j SNAT --to 172.16.8.1
 <span style="color:#75715e"># 不能上网的机器，修改网关</span>
 route add default gw 192.168.1.1
 </code></pre></div><p>DNAT常用于将内部机器暴漏给外部用户使用。<code>iptables -t nat -A PREROUTING -d 172.16.8.1 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.20:8080</code></p>
-<h3 id="磁盘管理">磁盘管理</h3>
+<h2 id="磁盘管理">磁盘管理</h2>
 <p>Block单位是1KB，也就是两个扇区（sector），1048576表示1G，即<code>1024*1024KB</code>，扇区数（首尾都算）为<code>2099199 - 2048 + 1 = 1048576</code></p>
 <p>MBR磁盘前512字节（0扇区）中有64字节的分区表，最大2T，GPT前34个扇区和最后的33个扇区为分区表信息（一个EFI扇区和32个分区表扇区）</p>
 <p>分区类型83为Linux，82为swap，8e为LVM。默认情况下swap分区位于磁盘最后，这样扩展根分区时需要先删除。</p>
@@ -402,9 +403,26 @@ vgextend /dev/centos /dev/sda3
 lvextend /dev/centos/root /dev/sda3
 xfs_growfs /dev/centos/root
 df -h
-</code></pre></div><h3 id="时间同步">时间同步</h3>
-<h3 id="防火墙">防火墙</h3>
-<h3 id="tcpip">TCP/IP</h3>
+</code></pre></div><h2 id="时间同步">时间同步</h2>
+<h2 id="防火墙">防火墙</h2>
+<h2 id="tcpip">TCP/IP</h2>
+<p>通过seq标识自己的payload字节数，ack设置为收到的seq加一表示收到对方的报文</p>
+<p><strong>三次握手</strong></p>
+<p>client发送syn报文(seq=x)，状态变为SYN_SENT，server收到后发送syn-ack报文(seq=y, ack=x+1), 状态变为SYN_RCVD</p>
+<p>client收到后发送ack报文(seq=x+1, ack=y+1), 状态变为ESTABLISHED，server收到后, 状态变为ESTABLISHED</p>
+<p><strong>四次挥手</strong></p>
+<ul>
+<li>client主动关闭（Keep-Alive时常是这种状态）：</li>
+</ul>
+<p>client发送fin报文(seq=x, ack=y)，状态变为FIN_WAIT_1，server收到后发送ack报文(seq=y, ack=x+1), 状态变为CLOSE_WAIT</p>
+<p>client收到后状态变为FIN_WAIT_2, server准备好后，发送fin报文(seq=y, ack=x+1), 状态变为LAST_ACK,</p>
+<p>client收到后发送ack报文(seq=x+1, ack=y+1), 状态变为TIME_WAIT，server收到后进入CLOSED状态</p>
+<ul>
+<li>双方同时关闭（非Keep-Alive时常是这种状态）：</li>
+</ul>
+<p>一方发送fin报文(seq=x, ack=y)，状态变为FIN_WAIT_1, 同时另一方也发送fin报文(seq=y, ack=x)，状态变为FIN_WAIT_1</p>
+<p>双方收到对方的报文后状态都变为CLOSING，并发送ack报文(seq=y+1, ack=x+1)，再次收到后双方进入TIME_WAIT状态。</p>
+<p>TIME_WAIT状态需要等待两倍最大报文生存时间(Maximum Segment Lifetime)，以便确认对方收到最后的ack报文</p>
 
         </div>
 
@@ -428,13 +446,13 @@ df -h
         
         <li><a href="/post/vmware-install-macos/">VMware安装MacOS 10.14</a></li>
         
+        <li><a href="/post/apache/">Windows下apache的安装配置与搭建PHP环境</a></li>
+        
         <li><a href="/post/docker/">Docker的安装与基本使用</a></li>
         
         <li><a href="/post/denyhosts/">denyhosts工具的使用</a></li>
         
         <li><a href="/archives/">归档</a></li>
-        
-        <li><a href="/search/">搜索</a></li>
         
     </ul>
 </div>
@@ -442,7 +460,11 @@ df -h
 
         <div class="post-meta meta-tags">
             
-            没有标签
+            <ul class="clearfix">
+                
+                <li><a href='https://zhuimoliu.github.io/tags/CentOS'>CentOS</a></li>
+                
+            </ul>
             
         </div>
     </article>
@@ -492,6 +514,10 @@ df -h
     </li>
     
     <li>
+        <a href="https://zhuimoliu.github.io/post/apache/" title="Windows下apache的安装配置与搭建PHP环境">Windows下apache的安装配置与搭建PHP环境</a>
+    </li>
+    
+    <li>
         <a href="https://zhuimoliu.github.io/post/docker/" title="Docker的安装与基本使用">Docker的安装与基本使用</a>
     </li>
     
@@ -508,10 +534,6 @@ df -h
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
-    <li><a href="https://zhuimoliu.github.io/categories/Dev/">Dev (1)</a></li>
-    
-    <li><a href="https://zhuimoliu.github.io/categories/Ops/">Ops (2)</a></li>
-    
 </ul>
     </section>
 
@@ -519,9 +541,23 @@ df -h
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="https://zhuimoliu.github.io/tags/Ops/">Ops</a>
+    <a href="https://zhuimoliu.github.io/tags/CentOS/">CentOS</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/Docker/">Docker</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/MacOS/">MacOS</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/PHP/">PHP</a>
     
     <a href="https://zhuimoliu.github.io/tags/SSH/">SSH</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/VMware/">VMware</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/Xdebug/">Xdebug</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/apache/">apache</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/httpd/">httpd</a>
     
 </div>
     </section>

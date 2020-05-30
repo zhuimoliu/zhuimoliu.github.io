@@ -78,13 +78,6 @@
             2020年5月24日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://zhuimoliu.github.io/categories/Dev'>Dev</a></span>
-            
-        </div>
-        
         <div class="post-content">
             xdebug是一个PHP的断点调试工具，JetBrains的IDE也可以使用。 在文档的兼容性中可以看到，不同的版本支持的PHP版本，PHP5.6的最新版本是2.5，PHP7.1以上的支持最新的2.9版本。 docker-compose.yml version: &#39;3&#39; services: mysql: image: mysql:5.7 container_name: mysql-5.7 environment: - MYSQL_ROOT_PASSWORD=root phpmyadmin: build: ./ container_name: phpmyadmin links: - mysql:db ports: - 8080:80 - 9000:9000 Dockerfile FROM phpmyadmin/phpmyadmin RUN pecl install xdebug &amp;&amp; set -ex;\ { \ echo……
         </div>
@@ -103,17 +96,28 @@
             2020年5月23日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://zhuimoliu.github.io/categories/Ops'>Ops</a></span>
-            
-        </div>
-        
         <div class="post-content">
             CentOS是RHEL的社区版，有安全稳定的特点，服务器使用最多的Linux。目前主流使用CentOS7版本，内核版本3.10。CentOS8的内核版本为4.18，安装需要至少2GB内存。 初始化 # 修改主机名，一般包含IP，版本，编号，用途等，使用点会被截短，即FQDN前面部分当主……
         </div>
         <p class="readmore"><a href="https://zhuimoliu.github.io/post/centos/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://zhuimoliu.github.io/post/apache/" title="Windows下apache的安装配置与搭建PHP环境">Windows下apache的安装配置与搭建PHP环境</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年3月6日
+        </date>
+        
+        <div class="post-content">
+            安装 Apache是基金会的名字，作为服务器web软件，真实名字叫httpd，官方并不提供二进制版本，需要自行编译 但是apachehaus提供了Windows下的二进制下载。不过需要说明的是httpd不管是在Windows下还是Linux下都是很不安全的，只能用于本地开发。 下载地址……
+        </div>
+        <p class="readmore"><a href="https://zhuimoliu.github.io/post/apache/">阅读全文</a></p>
     </article>
     
     
@@ -164,13 +168,6 @@
             2020年1月14日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://zhuimoliu.github.io/categories/Ops'>Ops</a></span>
-            
-        </div>
-        
         <div class="post-content">
             简介 DenyHosts是一个python写的脚本，常用来限制SSH登陆，通过监控系统日志，将超过错误次数的IP放入TCP Wrappers中禁止登陆。UNIX Review杂志评选的2005年8月的月度工具。除了基础的屏蔽IP功能，还有邮件通知，插件，同步等功能。 官方站点：http:……
         </div>
@@ -215,6 +212,10 @@
     </li>
     
     <li>
+        <a href="https://zhuimoliu.github.io/post/apache/" title="Windows下apache的安装配置与搭建PHP环境">Windows下apache的安装配置与搭建PHP环境</a>
+    </li>
+    
+    <li>
         <a href="https://zhuimoliu.github.io/post/docker/" title="Docker的安装与基本使用">Docker的安装与基本使用</a>
     </li>
     
@@ -231,10 +232,6 @@
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
-    <li><a href="https://zhuimoliu.github.io/categories/Dev/">Dev (1)</a></li>
-    
-    <li><a href="https://zhuimoliu.github.io/categories/Ops/">Ops (2)</a></li>
-    
 </ul>
     </section>
 
@@ -242,9 +239,23 @@
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
-    <a href="https://zhuimoliu.github.io/tags/Ops/">Ops</a>
+    <a href="https://zhuimoliu.github.io/tags/CentOS/">CentOS</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/Docker/">Docker</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/MacOS/">MacOS</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/PHP/">PHP</a>
     
     <a href="https://zhuimoliu.github.io/tags/SSH/">SSH</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/VMware/">VMware</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/Xdebug/">Xdebug</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/apache/">apache</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/httpd/">httpd</a>
     
 </div>
     </section>
