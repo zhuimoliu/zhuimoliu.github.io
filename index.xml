@@ -6,10 +6,19 @@
     <description>Recent content on 追墨的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 May 2020 21:06:53 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 21:06:53 +0800</lastBuildDate>
     
 	<atom:link href="https://zhuimoliu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Netgear R6220安装OpenWRT</title>
+      <link>https://zhuimoliu.github.io/post/openwrt/</link>
+      <pubDate>Sun, 07 Jun 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/openwrt/</guid>
+      <description>最近查看漏洞中心，发现很多路由器漏洞，最后干脆刷固件，不仅支持IPv6，而且还可以支持wpa3。最新的稳定版是19.07.3。 步骤其实很简单，登录路由器后台，上传OpenWRT固件即可，R6220已经支持直接安装，而且看到内存是128MB的，满足OpenWRT官方的要求。 稍等片刻</description>
+    </item>
     
     <item>
       <title>PHP调试工具xdebug的安装和使用</title>
