@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/tags/git/</link>
+    <description>Recent content in git on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 06 Jun 2020 21:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>git的安装配置与日常使用</title>
+      <link>https://zhuimoliu.github.io/post/git/</link>
+      <pubDate>Sat, 06 Jun 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/git/</guid>
+      <description>最流行的开源版本管理软件，有高性能，分布式，简单易学的特点。 文档：https://git-scm.com/book/zh/v2 编译安装 ius.io也提供较新的rpm包 wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.27.0.tar.xz wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.27.0.tar.sign xz -d git-2.27.0.tar.xz gpg --recv-keys 96AFE6CB gpg --verify git-2.27.0.tar.sign git-2.27.0.tar yum -y install make gcc gcc-c++ yum -y install autoconf curl-devel expat-devel gettext-devel openssl-devel perl-devel zlib-devel tar xf git-2.27.0.tar cd git-2.27.0 make configure ./configure --prefix=/usr/local/ make -j $(grep &amp;#39;processor&amp;#39; /proc/cpuinfo |wc -l) make install git --version 基础配置 # 将家</description>
+    </item>
+    
+  </channel>
+</rss>

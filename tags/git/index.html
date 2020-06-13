@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Docker | 追墨的博客</title>
-    <meta property="og:title" content="Docker - 追墨的博客">
+    <title>git | 追墨的博客</title>
+    <meta property="og:title" content="git - 追墨的博客">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="Blog">
-    <meta name="description" content="Docker">
+    <meta name="description" content="git">
         
     <meta name="author" content="追墨">
-    <meta property="og:url" content="https://zhuimoliu.github.io/tags/Docker/">
+    <meta property="og:url" content="https://zhuimoliu.github.io/tags/git/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
     <link rel="stylesheet" href='/css/style.css'>
-    <link rel="alternate" type="application/rss+xml+xml" href="https://zhuimoliu.github.io/tags/Docker/index.xml" title="追墨的博客" />
+    <link rel="alternate" type="application/rss+xml+xml" href="https://zhuimoliu.github.io/tags/git/index.xml" title="追墨的博客" />
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -69,7 +69,7 @@
     
     <h3 class="archive-title">
         包含标签
-        <span class="keyword">Docker</span>
+        <span class="keyword">git</span>
         的文章
     </h3>
     
@@ -78,16 +78,16 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://zhuimoliu.github.io/post/docker/">Docker的安装与基本使用</a>
+                <a href="https://zhuimoliu.github.io/post/git/">git的安装配置与日常使用</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年2月16日
+            2020年6月6日
         </date>
         
         <div class="post-content">
-            docker的特点： 环境配置一致 一次配置，到处运行 更快速的应用交付和部署 更便捷的升级和扩缩容 更简单的系统运维 更高效的计算资源利用 安装配置 # step 1: 安装必要的一些系统工具 sudo yum install -y yum-utils device-mapper-persistent-data lvm2 # Step 2: 添加软件源信息 sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo # Step 3: 更新并安装Docker-CE sudo yum makecache fast sudo yum -y install docker-ce # Step 4: 开启Docker……
-            <p class="readmore"><a href="https://zhuimoliu.github.io/post/docker/">阅读全文</a></p>
+            最流行的开源版本管理软件，有高性能，分布式，简单易学的特点。 文档：https://git-scm.com/book/zh/v2 编译安装 ius.io也提供较新的rpm包 wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.27.0.tar.xz wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.27.0.tar.sign xz -d git-2.27.0.tar.xz gpg --recv-keys 96AFE6CB gpg --verify git-2.27.0.tar.sign git-2.27.0.tar yum -y install make gcc gcc-c++ yum -y install autoconf curl-devel expat-devel gettext-devel openssl-devel perl-devel zlib-devel tar xf git-2.27.0.tar cd git-2.27.0 make configure ./configure --prefix=/usr/local/ make -j $(grep &#39;processor&#39; /proc/cpuinfo |wc -l) make install git --version 基础配置 # 将家……
+            <p class="readmore"><a href="https://zhuimoliu.github.io/post/git/">阅读全文</a></p>
         </div>
     </article>
     

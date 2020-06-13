@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>git的安装配置与日常使用</title>
+      <link>https://zhuimoliu.github.io/post/git/</link>
+      <pubDate>Sat, 06 Jun 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/git/</guid>
+      <description>最流行的开源版本管理软件，有高性能，分布式，简单易学的特点。 文档：https://git-scm.com/book/zh/v2 编译安装 ius.io也提供较新的rpm包 wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.27.0.tar.xz wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.27.0.tar.sign xz -d git-2.27.0.tar.xz gpg --recv-keys 96AFE6CB gpg --verify git-2.27.0.tar.sign git-2.27.0.tar yum -y install make gcc gcc-c++ yum -y install autoconf curl-devel expat-devel gettext-devel openssl-devel perl-devel zlib-devel tar xf git-2.27.0.tar cd git-2.27.0 make configure ./configure --prefix=/usr/local/ make -j $(grep &amp;#39;processor&amp;#39; /proc/cpuinfo |wc -l) make install git --version 基础配置 # 将家</description>
+    </item>
+    
+    <item>
       <title>PHP调试工具xdebug的安装和使用</title>
       <link>https://zhuimoliu.github.io/post/xdebug/</link>
       <pubDate>Sun, 24 May 2020 21:06:53 +0800</pubDate>
