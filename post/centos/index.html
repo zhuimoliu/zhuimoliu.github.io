@@ -404,7 +404,60 @@ lvextend /dev/centos/root /dev/sda3
 xfs_growfs /dev/centos/root
 df -h
 </code></pre></div><h2 id="时间同步">时间同步</h2>
+<p>文档：<a href="https://chrony.tuxfamily.org/faq.html">https://chrony.tuxfamily.org/faq.html</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># 默认情况下，前三次时间差超过1秒，允许步进，makestep 1 -1，适合经常挂起的虚拟机</span>
+<span style="color:#75715e"># 查看当前同步情况</span>
+chronyc tracking
+<span style="color:#75715e"># 执行一次同步并退出</span>
+systemctl stop chronyd
+chronyd -q <span style="color:#e6db74">&#39;server ntp1.aliyun.com iburst&#39;</span>
+systemctl start chronyd
+timedatectl
+</code></pre></div><p><strong>为LAN提供时间服务</strong></p>
+<p>开放udp的123端口，并修改chrony.conf文件，打开注释的allow和local</p>
 <h2 id="防火墙">防火墙</h2>
+<p>功能优先级次序：raw，mangle，nat，filter</p>
+<p>数据报文流程</p>
+<ul>
+<li>进入：PREROUTING, INPUT</li>
+<li>出去：OUTPUT, POSTROUTING</li>
+<li>转发：PREROUTING, FORWARD, POSTROUTING</li>
+</ul>
+<p>各功能中的链</p>
+<ul>
+<li>filter：INPUT，FORWARD，OUTPUT</li>
+<li>nat：PREROUTING，OUTPUT，POSTROUTING</li>
+<li>mangle：PREROUTING,INPUT，FORWARD,OUTPUT，POSTROUTING</li>
+<li>raw：PREROUTING，OUTPUT</li>
+</ul>
+<p><strong>扩展</strong></p>
+<p><code>rpm -ql iptables | grep &quot;[[:lower:]]\+\.so$&quot;</code>,大写为target，小写是可使用的扩展<br>
+<code>man iptables-extension</code>Centos7<br>
+<code>multiport</code>最多15个离散端口，<code>--sports 22,1024:1080</code>22端口和1024到1080的所有端口，<code>--dports</code><br>
+<code>iprange</code>,<code>--src-range</code>,<code>--dst-range</code>指定ip范围，用<code>-</code>分割<br>
+<code>string</code>检查报文中字符串，<code>-algo</code>比对算法，bm和kmp，<code>--string patern</code>,<code>--hex-string</code>,<code>--from --to</code><br>
+<code>time</code>,根据报文到达时间和指定时间进行匹配<code>--datestart</code>,<code>--datestop</code>,<code>--timestart</code>,<code>--timestop</code><br>
+<code>connlimit</code>根据客户端IP进行并发连接数限制，<code>--connlimit-above</code>,<code>--connlimit-upto</code><br>
+<code>limit</code>收发报文速率，令牌桶过滤器，<code>--limit</code>,<code>--limit-burst</code><br>
+<code>state</code>跟踪连接请求，检查连接的状态，修改<code>/proc/sys/net/nf_conntrack_max</code>,查看已追踪的连接<code>/proc/net/nf_conntrack</code><br>
+常用状态：NEW,ESTABLISHED,RELATED(ftp),INVALID,对于出站不放行NEW可以防范反弹式木马,<br>
+<code>/proc/sys/net/netfilter/</code>不同协议追踪超时设置</p>
+<p><strong>ftp防火墙规则</strong></p>
+<ul>
+<li>装载nf_conntrack_ftp模块
+<code>/lib/modules/KERNEL_VERSION/kernel/net/netfilter/</code>,依赖nf_conntrack<br>
+<code>modprobe nf_conntrack_ftp</code><br>
+<code>lsmod</code></li>
+<li>放行命令端口的NEW，ESTABLISHED
+<code>iptables -A INPUT -d localIP -p tcp --dport 21 -m state NEW,ESTABLISHED -j ACCEPT</code></li>
+<li>放行数据端口的RELATED，ESTABLISHED
+<code>iptables -A INPUT -d localIP -p tcp -m state RELATED,ESTABLISHED -j ACCEPT</code></li>
+<li>放行出站端口
+<code>iptables -A OUTPUT -s localIP -p tcp -m state ESTABLISHED -j ACCEPT</code></li>
+</ul>
+<p><strong>ipset</strong></p>
+<p><code>ipset create ftp-allow hash:ip</code></p>
+<p><code>iptables -I INPUT -m set --match-set ftp-allow src -j ACCEPT</code></p>
 <h2 id="tcpip">TCP/IP</h2>
 <p>通过seq标识自己的payload字节数，ack设置为收到的seq加一表示收到对方的报文</p>
 <p><strong>三次握手</strong></p>
