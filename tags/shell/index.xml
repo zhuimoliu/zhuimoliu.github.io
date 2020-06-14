@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shell on 追墨的博客</title>
+    <link>https://zhuimoliu.github.io/tags/shell/</link>
+    <description>Recent content in shell on 追墨的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 14 Jun 2020 21:06:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://zhuimoliu.github.io/tags/shell/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>shell脚本编程总结</title>
+      <link>https://zhuimoliu.github.io/post/shell/</link>
+      <pubDate>Sun, 14 Jun 2020 21:06:53 +0800</pubDate>
+      
+      <guid>https://zhuimoliu.github.io/post/shell/</guid>
+      <description>特殊规定 第一行，#!/bin/bash shell遇到错误并不会停止，需要通过set设置，set -u，nounset，遇到没有定义的变量报错，set -x，打印执行的命令, set -e，遇到错误退出，但管道命令除外，set -o pipefail, 管道中命令有一个失败就退出，组合set -euxo pipefail PHP的官方docke</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -287,6 +287,9 @@ git push origin --delete v1.4
 
 <span style="color:#75715e"># 分支历史</span>
 git log --oneline --decorate --graph
+
+<span style="color:#75715e"># 发布，避免http下载到.git目录的源码</span>
+git archive master --prefix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;project/&#39;</span> --format<span style="color:#f92672">=</span>zip &gt; project-<span style="color:#66d9ef">$(</span>date +%Y%m%d%H%M%S<span style="color:#66d9ef">)</span>.zip
 </code></pre></div><h2 id="服务">服务</h2>
 <p>四种协议，file，http，ssh，git。http有简单的和智能的，简单的仅能拉取不能推送，push后执行hooks/post-update钩子程序以便能拉取新的版本库</p>
 <p>git协议没有授权机制，需要守护进程并监听9418端口</p>
@@ -397,6 +400,10 @@ touch git-daemon-export-ok
 <ul class="widget-list">
     
     <li>
+        <a href="https://zhuimoliu.github.io/post/shell/" title="shell脚本编程总结">shell脚本编程总结</a>
+    </li>
+    
+    <li>
         <a href="https://zhuimoliu.github.io/post/openwrt/" title="Netgear R6220安装OpenWRT">Netgear R6220安装OpenWRT</a>
     </li>
     
@@ -465,6 +472,8 @@ touch git-daemon-export-ok
     <a href="https://zhuimoliu.github.io/tags/git/">git</a>
     
     <a href="https://zhuimoliu.github.io/tags/httpd/">httpd</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/shell/">shell</a>
     
 </div>
     </section>

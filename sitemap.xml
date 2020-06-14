@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://zhuimoliu.github.io/post/</loc>
+    <lastmod>2020-06-14T21:06:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhuimoliu.github.io/tags/shell/</loc>
+    <lastmod>2020-06-14T21:06:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhuimoliu.github.io/post/shell/</loc>
+    <lastmod>2020-06-14T21:06:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhuimoliu.github.io/tags/</loc>
+    <lastmod>2020-06-14T21:06:53+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zhuimoliu.github.io/</loc>
+    <lastmod>2020-06-14T21:06:53+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://zhuimoliu.github.io/post/openwrt/</loc>
     <lastmod>2020-06-07T21:06:53+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://zhuimoliu.github.io/tags/OpenWRT/</loc>
-    <lastmod>2020-06-07T21:06:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhuimoliu.github.io/post/</loc>
-    <lastmod>2020-06-07T21:06:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhuimoliu.github.io/tags/</loc>
-    <lastmod>2020-06-07T21:06:53+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zhuimoliu.github.io/</loc>
     <lastmod>2020-06-07T21:06:53+08:00</lastmod>
   </url>
   

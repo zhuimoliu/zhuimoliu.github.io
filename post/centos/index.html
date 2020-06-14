@@ -145,6 +145,7 @@
     <li><a href="#时间同步">时间同步</a></li>
     <li><a href="#防火墙">防火墙</a></li>
     <li><a href="#tcpip">TCP/IP</a></li>
+    <li><a href="#tcpdump">Tcpdump</a></li>
   </ul>
 </nav>
     </div>
@@ -476,6 +477,26 @@ timedatectl
 <p>一方发送fin报文(seq=x, ack=y)，状态变为FIN_WAIT_1, 同时另一方也发送fin报文(seq=y, ack=x)，状态变为FIN_WAIT_1</p>
 <p>双方收到对方的报文后状态都变为CLOSING，并发送ack报文(seq=y+1, ack=x+1)，再次收到后双方进入TIME_WAIT状态。</p>
 <p>TIME_WAIT状态需要等待两倍最大报文生存时间(Maximum Segment Lifetime)，以便确认对方收到最后的ack报文</p>
+<h2 id="tcpdump">Tcpdump</h2>
+<p>选项：</p>
+<p>i，指定网卡</p>
+<p>n, 不反解域名</p>
+<p>nn，也不反解端口</p>
+<p>s，指定抓包大小，默认前96字节，0表示整个包</p>
+<p>v，显示更多信息</p>
+<p>p，不进入混杂模式，默认会抓取经过网卡所有数据</p>
+<p>e，抓取以太网层，默认不抓取</p>
+<p>c，指定抓包数量</p>
+<p>A，以ASCII显示，X以十六进制显示</p>
+<p>w，保存到文件</p>
+<p>l，以行为缓冲，以便使用管道或重定向</p>
+<p>过滤条件：</p>
+<p>port，限定端口</p>
+<p>udp/icmp/tcp，限定协议</p>
+<p>host，限定host，dst限定目的host，src限定来源host，<code>src host 127.0.0.1</code></p>
+<p>and/or/not，组合过滤条件</p>
+<p>net，限定IP或网段，<code>192.168.1.1/24</code></p>
+<p>提取cookie示例: <code>tcpdump -nn -A -s0 -l | egrep -i 'Set-Cookie|Host:|Cookie:'</code></p>
 
         </div>
 
@@ -555,6 +576,10 @@ timedatectl
 <ul class="widget-list">
     
     <li>
+        <a href="https://zhuimoliu.github.io/post/shell/" title="shell脚本编程总结">shell脚本编程总结</a>
+    </li>
+    
+    <li>
         <a href="https://zhuimoliu.github.io/post/openwrt/" title="Netgear R6220安装OpenWRT">Netgear R6220安装OpenWRT</a>
     </li>
     
@@ -623,6 +648,8 @@ timedatectl
     <a href="https://zhuimoliu.github.io/tags/git/">git</a>
     
     <a href="https://zhuimoliu.github.io/tags/httpd/">httpd</a>
+    
+    <a href="https://zhuimoliu.github.io/tags/shell/">shell</a>
     
 </div>
     </section>
